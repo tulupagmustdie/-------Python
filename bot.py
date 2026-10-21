@@ -19,3 +19,20 @@ def telegram(method, data):
     if not answer.get("ok"):
         raise ValueError("Telegram не выполнил запрос.")
     return answer["result"]
+
+def send(chat_id, text):
+    telegram("sendMessage", {"chat_id": chat_id, "text": text})
+
+
+def handle_message(message):
+    """Обработать текстовые команды в личном чате."""
+    if message["chat"]["type"] != "private":
+        return
+    text = message.get("text", "").strip()
+    if not text:
+        return
+    chat_id = message["chat"]["id"]
+    if text.split()[0] in ("/start", "/help"):
+        send(chat_id, HELP)
+    else:
+        send(chat_id, "Поиск маршрутов добавим на следующем этапе. Отправь /help.")
