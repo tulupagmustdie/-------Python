@@ -13,5 +13,3 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Создай `.env` из `.env.example`, вставь настоящий токен Telegram и выполни `python bot.py`.
-Не загружай `.env` в Git. Остановка — Ctrl+C.
