@@ -1,7 +1,8 @@
 import time
 from pathlib import Path
 
-
+import requests
+from dotenv import dotenv_values
 
 FOLDER = Path(__file__).resolve().parent
 config = {}
